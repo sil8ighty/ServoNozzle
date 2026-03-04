@@ -10,7 +10,8 @@ namespace ServoCtrl {
     int  getAngle2();
 
     // Sweep control
-    void startSweep(uint8_t servoIndex, int minAngle, int maxAngle, uint8_t speed);
+    void startSweep(uint8_t servoIndex, int minAngle, int maxAngle);
+    void updateSweepRange(uint8_t servoIndex, int minAngle, int maxAngle);
     void stopSweep(uint8_t servoIndex);
     void stopAllSweeps();
     bool isSweeping(uint8_t servoIndex);

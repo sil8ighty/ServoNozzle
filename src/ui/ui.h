@@ -24,4 +24,7 @@ namespace UI {
 
     // Get the current save-status label for updating from screens
     void setStatusText(const char *text);
+
+    // Strip default theme from a btnmatrix and apply clean custom styling
+    void styleBtnMatrix(lv_obj_t *obj);
 }

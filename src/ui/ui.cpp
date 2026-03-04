@@ -285,6 +285,35 @@ void UI::setStatusText(const char *text) {
     }
 }
 
+void UI::styleBtnMatrix(lv_obj_t *obj) {
+    // Remove ALL theme-applied styles (this kills the strikethrough)
+    lv_obj_remove_style_all(obj);
+
+    // Main background
+    lv_obj_set_style_bg_opa(obj, LV_OPA_COVER, LV_PART_MAIN);
+    lv_obj_set_style_bg_color(obj, lv_color_hex(COLOR_PANEL), LV_PART_MAIN);
+    lv_obj_set_style_border_width(obj, 0, LV_PART_MAIN);
+    lv_obj_set_style_pad_column(obj, 4, LV_PART_MAIN);
+    lv_obj_set_style_pad_row(obj, 4, LV_PART_MAIN);
+    lv_obj_set_style_pad_all(obj, 2, LV_PART_MAIN);
+
+    // Items - default state
+    lv_obj_set_style_bg_opa(obj, LV_OPA_COVER, LV_PART_ITEMS);
+    lv_obj_set_style_bg_color(obj, lv_color_hex(COLOR_ACCENT), LV_PART_ITEMS);
+    lv_obj_set_style_text_color(obj, lv_color_hex(COLOR_TEXT_SEC), LV_PART_ITEMS);
+    lv_obj_set_style_text_font(obj, &lv_font_montserrat_14, LV_PART_ITEMS);
+    lv_obj_set_style_radius(obj, 6, LV_PART_ITEMS);
+    lv_obj_set_style_border_width(obj, 0, LV_PART_ITEMS);
+    lv_obj_set_style_shadow_width(obj, 0, LV_PART_ITEMS);
+
+    // Items - checked (selected) state
+    lv_obj_set_style_bg_color(obj, lv_color_hex(COLOR_HIGHLIGHT), LV_PART_ITEMS | LV_STATE_CHECKED);
+    lv_obj_set_style_text_color(obj, lv_color_hex(0xFFFFFF), LV_PART_ITEMS | LV_STATE_CHECKED);
+
+    // Items - pressed feedback
+    lv_obj_set_style_bg_color(obj, lv_color_hex(0x1a4a80), LV_PART_ITEMS | LV_STATE_PRESSED);
+}
+
 void UI::refreshServoDisplays() {
     int a1 = ServoCtrl::getAngle1();
     int a2 = ServoCtrl::getAngle2();
